@@ -1,4 +1,5 @@
 const STATUS_LABEL = {
+  unmonitored: "Not Yet Monitored",
   operational: "Operational",
   degraded_performance: "Degraded Performance",
   partial_outage: "Partial Outage",
@@ -30,6 +31,7 @@ async function loadStatus() {
   for (const c of data.components) {
     const el = document.createElement("div");
     el.className = "component";
+    el.dataset.monitored = c.isMonitored;
     el.innerHTML = `
       <div class="component-row">
         <div>
@@ -45,7 +47,7 @@ async function loadStatus() {
       </div>
       <div class="history-meta">
         <span>90 days ago</span>
-        <span>${c.uptime90d}% uptime</span>
+        <span>${c.isMonitored ? c.uptime90d + "% uptime" : "No monitoring data yet"}</span>
         <span>Today</span>
       </div>
     `;

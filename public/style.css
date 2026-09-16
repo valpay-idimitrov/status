@@ -134,6 +134,9 @@ body {
 .component-status[data-status="degraded_performance"],
 .component-status[data-status="partial_outage"] { color: var(--warn); background: var(--warn-bg); }
 .component-status[data-status="major_outage"] { color: var(--bad); background: var(--bad-bg); }
+.component-status[data-status="unmonitored"] { color: var(--nodata); background: var(--nodata-bg); }
+
+.component[data-monitored="false"] { opacity: 0.7; }
 
 .history-bar {
   display: flex;
