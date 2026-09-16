@@ -1,0 +1,208 @@
+:root {
+  --ink: #16213a;
+  --ink-soft: #4a5578;
+  --paper: #f7f8fb;
+  --line: #dde1ec;
+  --card: #ffffff;
+  --accent: #2e4bd6;
+
+  --ok: #1c8a5b;
+  --ok-bg: #e8f5ee;
+  --warn: #b6740e;
+  --warn-bg: #fbf0dd;
+  --bad: #b3312c;
+  --bad-bg: #fbe9e8;
+  --nodata: #9aa1b8;
+  --nodata-bg: #eef0f5;
+
+  font-size: 16px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+.masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 40px 0 32px;
+}
+
+.masthead-brand {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.masthead-nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 14px;
+}
+.masthead-nav a:hover { color: var(--ink); text-decoration: underline; }
+
+.banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  border-radius: 10px;
+  padding: 22px 24px;
+  background: var(--ok-bg);
+  border: 1px solid var(--line);
+  margin-bottom: 28px;
+}
+.banner[data-state="degraded_performance"] { background: var(--warn-bg); }
+.banner[data-state="partial_outage"] { background: var(--warn-bg); }
+.banner[data-state="major_outage"] { background: var(--bad-bg); }
+
+.banner-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+  background: var(--ok);
+}
+.banner[data-state="degraded_performance"] .banner-dot,
+.banner[data-state="partial_outage"] .banner-dot { background: var(--warn); }
+.banner[data-state="major_outage"] .banner-dot { background: var(--bad); }
+
+.banner h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+.banner-time {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.components {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  overflow: hidden;
+  margin-bottom: 48px;
+}
+
+.component {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+}
+.component:last-child { border-bottom: none; }
+
+.component-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.component-name {
+  font-weight: 600;
+  font-size: 15px;
+}
+.component-desc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+.component-status {
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+.component-status[data-status="operational"] { color: var(--ok); background: var(--ok-bg); }
+.component-status[data-status="degraded_performance"],
+.component-status[data-status="partial_outage"] { color: var(--warn); background: var(--warn-bg); }
+.component-status[data-status="major_outage"] { color: var(--bad); background: var(--bad-bg); }
+
+.history-bar {
+  display: flex;
+  gap: 2px;
+  margin-top: 14px;
+}
+.history-cell {
+  flex: 1;
+  height: 28px;
+  border-radius: 2px;
+  background: var(--ok);
+}
+.history-cell[data-status="degraded_performance"],
+.history-cell[data-status="partial_outage"] { background: var(--warn); }
+.history-cell[data-status="major_outage"] { background: var(--bad); }
+.history-cell[data-status="no_data"] { background: var(--nodata); }
+
+.history-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 6px;
+}
+
+.incidents h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.incident {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  padding: 18px 22px;
+  margin-bottom: 14px;
+}
+.incident-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin: 0 0 8px;
+}
+.incident-update {
+  font-size: 14px;
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+}
+.incident-update:first-of-type { border-top: none; padding-top: 0; }
+.incident-update-meta {
+  color: var(--ink-soft);
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.empty-state {
+  color: var(--ink-soft);
+  font-size: 14px;
+  padding: 12px 0;
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 480px) {
+  .component-row { flex-direction: column; align-items: flex-start; }
+}

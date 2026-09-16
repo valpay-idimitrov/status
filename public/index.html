@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ValPay Status</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <div class="masthead-brand">ValPay</div>
+      <nav class="masthead-nav">
+        <a href="#incidents">Incident history</a>
+      </nav>
+    </header>
+
+    <section class="banner" id="banner" data-state="loading">
+      <div class="banner-dot" aria-hidden="true"></div>
+      <div>
+        <h1 id="banner-title">Checking current status&hellip;</h1>
+        <p id="banner-time" class="banner-time"></p>
+      </div>
+    </section>
+
+    <section class="components" id="components" aria-label="Component status"></section>
+
+    <section class="incidents" id="incidents" aria-label="Incident history">
+      <h2>Incident history</h2>
+      <div id="incidents-list"></div>
+    </section>
+
+    <footer class="footer">
+      <p>This page reflects the operating status of ValPay merchant portal services. It updates automatically and does not represent contractual service-level commitments.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

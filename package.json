@@ -1,0 +1,11 @@
+{
+  "name": "valpay-status",
+  "version": "1.0.0",
+  "description": "Public status page for the ValPay merchant portal, backed by Datadog + Supabase, deployed on Vercel.",
+  "scripts": {
+    "test": "node lib/uptime.test.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.116.0"
+  }
+}
